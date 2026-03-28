@@ -1,0 +1,36 @@
+import mafmods as mm
+import matplotlib.pyplot as plt
+import cartopy
+import cartopy.crs as ccrs
+import cartopy.feature as cf
+import pandas as pd
+
+"""df=mm.trend()[:10]
+print(df)
+
+n=0
+namelist=[]
+for i in df['Year']:
+    n=n+1
+    namelist.append(mm.plotyear(i, 5, [-125, -65, 25, 50], 5, n))
+mm.animate(namelist, 'Top ten years for US flood reports adjusted')
+"""
+conus= [-125, -65, 25, 50]
+
+northeast=[-87, -64, 35, 50]
+
+midatl=[-90, -72, 28, 44]
+
+midwest=[-87, -64, 35, 50]
+
+
+#mm.plotdates('09/16/2004','09/21/2004',5,midatl,8)
+#mm.plotyear(2011, 3, conus, 2, 'AHPS')
+
+df=mm.createdf()
+print(df)
+
+df = df.groupby(df['MY1']).size().reset_index(name='count')
+
+df = df.sort_values(by='count', ascending=False)
+print(df[:50])
